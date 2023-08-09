@@ -1,0 +1,39 @@
+
+  
+  
+  
+
+// In normal CSS , if we have to work on child container then we have to write code like below
+// .categories-container{
+//     background-color: red;
+//     padding: 10px;
+// }
+
+// .categories-container .category-container {
+//     background-color: green;
+//     padding: 20px;
+// }
+
+// .categories-container .category-container .category-body-container {
+//     background-color: blue;
+//     padding: 30px;
+// }
+
+
+// But in scss we can write more intuative code like this below
+// we can write child class style inside the parent class style only
+// This is the main difference between css and scss.
+// .categories-container{
+//     background-color: red;
+//     padding: 10px;
+
+//     .category-container {
+//         background-color: green;
+//         padding: 20px;
+
+//         .category-body-container {
+//             background-color: blue;
+//             padding: 30px;
+//         }
+//     }
+// }
