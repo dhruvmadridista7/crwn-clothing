@@ -9,7 +9,9 @@ import {
     signInWithPopup, 
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 } from 'firebase/auth';
 
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
@@ -48,7 +50,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInfo) => {
 
     const userSnapshot = await getDoc(userDocRef);
 
-    console.log(userSnapshot);
+    // console.log(userSnapshot);
     console.log(userSnapshot.exists()) //this will check that if 'user' collection or userSnapshot data is exists in the db or not
 
     // if user data does not exist
@@ -87,7 +89,9 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password);
 }
 
+export const signOutUser = async () => await signOut(auth);
 
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
 // This file and whole process and functions and libs are specific for google.
 

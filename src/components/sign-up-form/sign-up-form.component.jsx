@@ -1,7 +1,9 @@
 import { useState } from "react";
+// import { useContext } from 'react';
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 
+// import { UserContext } from "../../contexts/user.context";
 
 import './sign-up-form.styles.scss';
 import Button from "../button/button.component";
@@ -20,6 +22,8 @@ const SignUpForm = () => {
     const { displayName, email, password, confirmPassword } = formFields;
 
     // console.log(formFields);
+    // console.log("hit")   //checking re-rendering after using useContext in this component.
+    // const { setCurrentUser } = useContext(UserContext);
 
     const resetFormField = () => {
         setFormFields(defaultFormFields);
@@ -32,10 +36,12 @@ const SignUpForm = () => {
             alert('password do not match');
             return;
         }
-        console.log(email, password);
+        // console.log(email, password);
         try {
             const { user } = await createAuthUserWithEmailAndPassword(email, password);
-            // console.log(response);
+            // console.log(response); 
+            // setCurrentUser(user);
+
             await createUserDocumentFromAuth(user, { displayName });
             resetFormField();
         } catch (error) {
