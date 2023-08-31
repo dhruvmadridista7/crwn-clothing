@@ -35,6 +35,7 @@ const Home = () => {
     <div>
         <Outlet />
         <Directory categories={categories}/>
+        <p>This website is still in progress, But features like user Login/sign Up, shop and checkout is completed</p>
     </div>
     
   );

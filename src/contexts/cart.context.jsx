@@ -75,7 +75,7 @@ export const CartProvider = ({children}) => {
     const [cartCount, setCartCount] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
 
-    //instructors approach , but mine one looks batter it's single line code
+    //other approach
     useEffect(() => {
         const newCartCount = cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
         setCartCount(newCartCount);
@@ -88,7 +88,7 @@ export const CartProvider = ({children}) => {
 
     const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
-        // setCartCount(cartCount + 1);   //my approach
+        // setCartCount(cartCount + 1);   //diff approach
     }
 
     // const decreamentItemFromCart = (productToDecreament) => {

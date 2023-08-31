@@ -27,7 +27,7 @@ const App = () => {
     <Routes>
         <Route path='/' element={<Navigation />}>
           <Route index element={<Home />}/>
-          <Route path='shop' element={<Shop />}/> 
+          <Route path='shop/*' element={<Shop />}/> 
           <Route path='auth' element={<Authentication />} /> 
           <Route path='checkout' element={<Checkout />} />
         </Route>
@@ -40,3 +40,4 @@ export default App;
 
 // whenever we map through data then we have to use ID
 // We can apply costome style in div tag by adding style = {{ baclgroundImage: url() }}
+// shop/* "*" is wildcard , so whatever comes in query after shop will match that in url.
