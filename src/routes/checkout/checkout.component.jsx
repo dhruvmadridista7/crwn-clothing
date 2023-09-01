@@ -4,30 +4,36 @@ import { CartContext } from '../../contexts/cart.context';
 // import CartItem from '../../components/cart-item/cart-item.component';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
-import './checkout.styles.scss';
+// import './checkout.styles.scss';
+import {
+    CheckoutContainer,
+    CheckoutHeader,
+    HeaderBlock,
+    Total,
+  } from './checkout.styles';
 
 const Checkout = () => {
     const { cartItems, cartTotal, /*addItemToCart, removeItemToCart*/ } = useContext(CartContext);
 
     return (
-        <div className='checkout-container'>
-            <div className='checkout-header'> 
-                <div className='header-block'>
+        <CheckoutContainer>
+            <CheckoutHeader> 
+                <HeaderBlock>
                     <span>Product</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Description</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Quantity</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Price</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Remove</span>
-                </div>
-            </div>
+                </HeaderBlock>
+            </CheckoutHeader>
 
             
             {
@@ -38,8 +44,8 @@ const Checkout = () => {
                 })
             }
             
-            <span className='total'>Total : ${cartTotal}</span>
-        </div>
+            <Total>Total : ${cartTotal}</Total>
+        </CheckoutContainer>
     );
 };
 
@@ -52,7 +58,7 @@ export default Checkout;
 //     cartItems.map((cartItem) => {
 //         const { id, name, quantity } = cartItem;
 //         return (
-//             <div key={id}>
+//             <HeaderBlock key={id}>
 //                 <h2>{name}</h2>
 //                 <span>{quantity}</span>
 //                 <br />
@@ -61,7 +67,7 @@ export default Checkout;
 //                 <span onClick={() => removeItemToCart(cartItem)}>decreament</span>
 //                 <br />
 //                 {/* <span onClick={() => removeItemToCart(cartItem)}>x</span> */}
-//             </div>
+//             </HeaderBlock>
 //         )
 //     })
 // }
