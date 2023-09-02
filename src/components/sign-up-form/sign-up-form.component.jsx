@@ -1,5 +1,7 @@
 import { useState } from "react";
 // import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 
@@ -21,6 +23,8 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
+
+    const navigate = useNavigate();
 
     // console.log(formFields);
     // console.log("hit")   //checking re-rendering after using useContext in this component.
@@ -44,6 +48,7 @@ const SignUpForm = () => {
             // setCurrentUser(user);
 
             await createUserDocumentFromAuth(user, { displayName });
+            navigate('/');
             resetFormField();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {

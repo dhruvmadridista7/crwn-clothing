@@ -1,5 +1,6 @@
 import { useState } from "react";
 // import { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES} from "../button/button.component";
@@ -23,6 +24,7 @@ const defaultFormFields = {
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
+    const navigate = useNavigate();
 
     // const { setCurrentUser } = useContext(UserContext);
 
@@ -32,6 +34,7 @@ const SignInForm = () => {
 
     const signInWithGoogle = async () => {
         await signInWithGooglePopup();
+        navigate('/');
         // const { user } = await signInWithGooglePopup();
         // console.log(response);
         // setCurrentUser(user);
@@ -45,6 +48,7 @@ const SignInForm = () => {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             // setCurrentUser(user);
             // console.log(response);
+            navigate('/');
             resetFormField();
         } catch (error) {
             switch(error.code) {
